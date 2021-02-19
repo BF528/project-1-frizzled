@@ -1,0 +1,74 @@
+---
+title: "Project1_Programmer_BF528"
+author: "Zhuorui Sun"
+date: "2021/2/17"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Project1_Programmer
+
+Loading Libraries
+```{r}
+library(affy)
+library(affyPLM)
+library(AnnotationDbi)
+library(hgu133plus2.db)
+library(sva)
+library(factoextra)
+library(ggplot2)
+```
+
+Read in data and normalizing
+```{r}
+Ori_affyData <- ReadAffy()
+Nor_affyData <- rma(Ori_affyData)
+PLM_affyData <- fitPLM(Ori_affyData,normalize =TRUE, background = TRUE)
+```
+
+Compute RLE and NUSE
+```{r}
+RLE(PLM_affyData)
+NUSE(PLM_affyData)
+rle <- RLE(PLM_affyData,type = "stats")
+nuse <- NUSE(PLM_affyData,type = "stats")
+rle_median <- rle[1,]
+nuse_median <- nuse[1,]
+hist(rle_median)
+hist(nuse_median)
+```
+
+Batch effects
+```{r}
+Proj_metadata <- read.csv("D:/RStudio/proj_metadata.csv")
+e_Data <- exprs(Nor_affyData)
+write.csv(e_Data, 'e_Data.csv')
+After_CB_Data <- ComBat(dat = e_Data, batch = Proj_metadata$normalizationcombatbatch)
+write.csv(After_CB_Data,"After_ComBat_Data.csv")
+```
+
+Run PCA
+```{r}
+PCA_tran_Data <- t(After_CB_Data)
+Scaled_PCA_Data <- scale(PCA_tran_Data)
+PCA_tranback_Data <- t(Scaled_PCA_Data)
+PCA_Data <-prcomp(PCA_tranback_Data, scale = FALSE, center = FALSE)
+summary(PCA_Data)
+
+PCA_RO_Matrix <- PCA_Data$rotation
+ggplot(data.frame(PCA_RO_Matrix), mapping = aes(x = PC1, y = PC2))+
+  geom_point()+ labs(title = 'PCA plot', x= 'PC1 11.47%', y='PC2 8.41%')
+```
+
+PCA visualization
+```{r}
+fviz_eig(PCA_Data,addlabels = TRUE, ylim = c(0,12))
+#fviz_pca_ind(PCA_Data,col.ind = "cos2",gradient.cols = c("#00AFBB", "#E7B800", #"#FC4E07"),
+#  repel = TRUE)
+#fviz_pca_biplot(PCA_Data, repel = TRUE)
+```
