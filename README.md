@@ -1,10 +1,15 @@
 # Project Description
 
-A brief description of what this repository is for and what it contains
+This repository centers on Microarray Based Tumor Classification. This project focuses on reproducing the results from Marisa et al., 2013.
+
+Marisa et al. Gene Expression Classification of Colon Cancer into Molecular Subtypes: Characterization, Validation, and Prognostic Value. PLoS Medicine, May 2013
 
 # Contributors
 
-List contributor names and github user names, or email addresses if desired
+Janvee Patel - Data Curator
+Zhuorui Sun - Programmer
+Yashrajsinh Jadeja - Analyst
+Camilla Belamarich - Biologist
 
 # Repository Contents
 
