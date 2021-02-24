@@ -15,5 +15,5 @@ Yashrajsinh Jadeja - Analyst
 Camilla Belamarich - Biologist
 
 # Repository Contents
-
-Provide a brief description of each script/code file in this repo, what it does, and how to execute it
+1. The code files allow for reading in the CEL files, data normalization, correcting for batch effects, and performing Principal Component Analysis (PCA) on the normalized data. 
+2. The code files allow for further statistical analysis, noise filtering, hierarchical clustering, and subtype discovery.
