@@ -7,8 +7,11 @@ Marisa et al. Gene Expression Classification of Colon Cancer into Molecular Subt
 # Contributors
 
 Janvee Patel - Data Curator
+
 Zhuorui Sun - Programmer
+
 Yashrajsinh Jadeja - Analyst
+
 Camilla Belamarich - Biologist
 
 # Repository Contents
