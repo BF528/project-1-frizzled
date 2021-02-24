@@ -17,4 +17,4 @@ Camilla Belamarich - Biologist
 # Repository Contents
 1. The Programmer code files allow for reading in the CEL files, data normalization, correcting for batch effects, and performing Principal Component Analysis (PCA) on the normalized data. 
 2. The Analyst code files allow for further statistical analysis, noise filtering, hierarchical clustering, and subtype discovery.
-3. The Biologist code files allow for differential expression analysis, contingency tables, Fisher's Exact Test, and statistical analysis of significantly enriched gene sets.
+3. The Biologist code files allow for further differential expression analysis, contingency tables, Fisher's Exact Test, and statistical analysis of significantly enriched gene sets.
